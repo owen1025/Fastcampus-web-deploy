@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('#mainBtn').click(function() {
         $.ajax({
-            url         : BASE_URL + 'album',
+            url         : BASE_URL + 'list',
             type        : 'GET',
             success     : function(data) {
                 var $albumCardOriginData = $('#albumCardTemp').html();
