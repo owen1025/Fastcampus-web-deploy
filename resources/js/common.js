@@ -1,1 +1,1 @@
-BASE_URL = 'http://localhost:8080/'
+BASE_URL = 'http://nginx-lb-2007386994.ap-northeast-2.elb.amazonaws.com/api/'
