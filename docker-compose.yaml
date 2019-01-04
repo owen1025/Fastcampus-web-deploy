@@ -41,7 +41,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - traefik-net
+      - external
     deploy:
       placement:
         constraints: [node.role==manager]
