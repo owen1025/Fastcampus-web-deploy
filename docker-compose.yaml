@@ -62,21 +62,16 @@ services:
       - external
       - internal
     environment: 
-      - REDIS_HOST=Redis
+      - REDIS_HOST=redis
     deploy:
       mode: global
       labels:
         - "traefik.port=4567"
         - "traefik.frontend.rule=Host:counter.local.dev"
 
-  Redis:
-    image: redis:latest
-    networks: 
-      - internal
-
   redis:
     image: redis:latest
-    networks:
+    networks: 
       - internal
 
 networks:
