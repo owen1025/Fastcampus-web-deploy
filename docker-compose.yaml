@@ -4,6 +4,8 @@ version: "3.7"
 services:
   traefik:
     image: traefik:latest
+    command: 
+      - --web
     ports:
       - 80:80
       - 8080:8080
@@ -54,6 +56,9 @@ services:
       replicas: 3
       labels:
         - "traefik.port=80"
+        - "traefik.enable=true"
+        - "traefik.docker.network=fastcampus_external"
+        - "traefik.backend=web"
         - "traefik.frontend.rule=Host:web.local.dev"
 
   counter:
@@ -67,6 +72,9 @@ services:
       mode: global
       labels:
         - "traefik.port=4567"
+        - "traefik.enable=true"
+        - "traefik.docker.network=fastcampus_external"
+        - "traefik.backend=counter"
         - "traefik.frontend.rule=Host:counter.local.dev"
 
   redis:
