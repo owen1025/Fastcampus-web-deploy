@@ -84,6 +84,7 @@ services:
 
 networks:
   external:
-    driver: overlay
+    # driver: overlay
+    external: true
   internal:
-    driver: overlay
+    external: true
