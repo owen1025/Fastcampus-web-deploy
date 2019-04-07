@@ -6,6 +6,9 @@ services:
     image: traefik:latest
     command: 
       - --web
+      - --docker
+      - --docker.swarmmode
+      - --docker.watch
     ports:
       - 80:80
       - 8080:8080
@@ -52,8 +55,17 @@ services:
     image: 322749112518.dkr.ecr.ap-northeast-2.amazonaws.com/web-repo:latest
     networks: 
       - external
+    helthcheck:
+      test: curl localhost:80/index.html
+
     deploy:
-      replicas: 3
+      # mode: replicated
+      # replicas: 3
+
+      mode: global
+      # placement:
+      #   constraints:
+      #     - node.label.db == true
       labels:
         - "traefik.port=80"
         - "traefik.enable=true"
@@ -84,7 +96,6 @@ services:
 
 networks:
   external:
-    # driver: overlay
-    external: true
+    driver: overlay
+    # external: true
   internal:
-    external: true
