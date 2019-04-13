@@ -55,8 +55,8 @@ services:
     image: 322749112518.dkr.ecr.ap-northeast-2.amazonaws.com/web-repo:latest
     networks: 
       - external
-    helthcheck:
-      test: curl localhost:80/index.html
+    # helthcheck:
+    #   test: curl localhost:80/index.html
 
     deploy:
       # mode: replicated
